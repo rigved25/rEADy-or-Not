@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rEAD or NOT</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>rEAD or NOT</h1>
+        <p>Quickly track whether the EAD mail arrived.</p>
+      </header>
+
+      <section class="card" id="login-card">
+        <h2>Login</h2>
+        <label for="user-select">Who are you?</label>
+        <div class="row">
+          <select id="user-select">
+            <option value="">Select user</option>
+            <option value="Shrirang">Shrirang</option>
+            <option value="Lakshita">Lakshita</option>
+          </select>
+          <button id="continue-btn">Continue</button>
+        </div>
+        <p class="note">Simple selector only (no password).</p>
+      </section>
+
+      <section class="card hidden" id="lakshita-card">
+        <div class="card-title-row">
+          <h2>Lakshita Action</h2>
+          <button class="link-btn" id="switch-user-btn-1">Switch user</button>
+        </div>
+        <p>Did you find the mail today?</p>
+        <div class="row">
+          <button class="yes" id="found-yes-btn">Yes</button>
+          <button class="no" id="found-no-btn">No</button>
+        </div>
+        <p id="submit-status" class="status"></p>
+      </section>
+
+      <section class="card hidden" id="shrirang-card">
+        <div class="card-title-row">
+          <h2>Shrirang View</h2>
+          <button class="link-btn" id="switch-user-btn-2">Switch user</button>
+        </div>
+        <p>Latest checks are shown below.</p>
+      </section>
+
+      <section class="card hidden" id="table-card">
+        <div class="card-title-row">
+          <h2>Latest Checks</h2>
+          <button id="refresh-btn">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Checked At</th>
+                <th>Found</th>
+              </tr>
+            </thead>
+            <tbody id="checks-body">
+              <tr>
+                <td colspan="2">No data yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" id="setup-warning">
+        <h2>Setup Required</h2>
+        <p>
+          Copy <code>config.example.js</code> to <code>config.js</code> and add your Supabase
+          project URL and anon key.
+        </p>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
