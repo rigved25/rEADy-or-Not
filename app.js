@@ -27,10 +27,16 @@ const missionMessages = [
   "Someone built an entire website for this. And yet, here we are.",
   "Day N of waiting. But sure, 7-10 business days.",
   "Could this process *be* any slower?",
-  "On the bright side, at least the website works.",
-  "HR is asking questions. We need that card.",
   "Pentagon called. They want their security system back.",
-  "Sources confirm the package has not materialized. Again.",
+  "Fun fact: this website took less time to build than the package took to arrive.",
+  "Refreshing this page won't make it arrive faster. But here we are.",
+  "Powered by Supabase, hope, and mild desperation.",
+  "Estimated delivery: eventually.",
+  "Two people. One dropdown. Zero packages.",
+  "This page loads faster than USPS delivers. Low bar, but still.",
+  "Security level: vibes-based authentication.",
+  "If you're reading this, you're probably Shrirang. Relax.",
+  "HR is asking questions. We need that card.",
 ];
 
 function show(el) {
@@ -72,15 +78,37 @@ function setRows(rows) {
 
 const successLines = [
   "OH. MY. GOD. It actually came.",
-  "Quick, someone pinch me. This can't be real.",
-  "Mission Complete. Finally. Someone tell HR.",
+  "I'd like to thank USPS for eventually doing their job.",
+  "Shrirang can finally stop doom-refreshing this page.",
+  "This calls for a party. Or at least closing this website forever.",
+  "Ladies and gentlemen, we got it.",
+  "Alert all channels. This is not a drill.",
+  "Pack it up everyone. The website served its purpose.",
+  "USPS did something right. Mark the calendar.",
+  "The package has landed. I repeat, the package has landed.",
+  "We did it. Well, USPS did it. We just waited.",
+  "Somebody throw confetti. Or just close this tab.",
+  "One small step for USPS, one giant relief for Shrirang.",
 ];
 
 const failureLines = [
-  "Oh, what a surprise. Said no one. Ever.",
-  "In other news, water is wet.",
+  "Narrator: It did not arrive.",
+  "Your daily dose of disappointment, delivered faster than USPS.",
+  "USPS sends their regards. Just kidding, they sent nothing.",
   "Could USPS *be* any slower?",
-  "Mission Failed. Shocking. See you tomorrow.",
+  "Oh, what a surprise. Said no one. Ever.",
+  "At this rate, Shrirang's grandkids will receive it.",
+  "At this point, a carrier pigeon would've been faster.",
+  "And the award for most predictable outcome goes to...",
+  "If waiting was a sport, we'd be Olympic champions.",
+  "Still nothing. But hey, at least this dropdown login is working flawlessly.",
+  "The only thing arriving today is disappointment.",
+  "Task failed successfully. Wait, no. Just failed.",
+  "7-10 business days. And that was a lie.",
+  "In a parallel universe, this package arrived weeks ago.",
+  "We've been ghosted. By the postal service.",
+  "Somewhere, a USPS truck just drove past your house. Without stopping.",
+  "Maybe the real package was the friends we made along the way. Just kidding, we want the package.",
 ];
 
 function pickRandom(arr) {
