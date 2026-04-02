@@ -23,12 +23,14 @@ const switchUserBtn1 = document.getElementById("switch-user-btn-1");
 const switchUserBtn2 = document.getElementById("switch-user-btn-2");
 
 const missionMessages = [
-  "USPS tracking refreshed 12 times today. No change.",
-  "Someone built an entire website for this. Let that sink in.",
-  "Day N of waiting. Morale is... fine.",
-  "Bureaucracy boss fight: still active.",
-  "Sources confirm the package has not materialized.",
+  "USPS tracking refreshed 12 times. Still 'in transit.' Shocking.",
+  "Someone built an entire website for this. And yet, here we are.",
+  "Day N of waiting. But sure, 7-10 business days.",
+  "Could this process *be* any slower?",
+  "On the bright side, at least the website works.",
   "HR is asking questions. We need that card.",
+  "Pentagon called. They want their security system back.",
+  "Sources confirm the package has not materialized. Again.",
 ];
 
 function show(el) {
@@ -53,7 +55,7 @@ function formatDate(value) {
 
 function setRows(rows) {
   if (!rows || rows.length === 0) {
-    checksBody.innerHTML = '<tr><td colspan="2">No field reports yet. The package remains unaccounted for.</td></tr>';
+    checksBody.innerHTML = '<tr><td colspan="2">No reports yet. Much like the package, absolutely nothing is here.</td></tr>';
     return;
   }
 
@@ -68,9 +70,25 @@ function setRows(rows) {
     .join("");
 }
 
+const successLines = [
+  "OH. MY. GOD. It actually came.",
+  "Quick, someone pinch me. This can't be real.",
+  "Mission Complete. Finally. Someone tell HR.",
+];
+
+const failureLines = [
+  "Oh, what a surprise. Said no one. Ever.",
+  "In other news, water is wet.",
+  "Could USPS *be* any slower?",
+  "Mission Failed. Shocking. See you tomorrow.",
+];
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
 function rotateMissionMessage() {
-  const pick = missionMessages[Math.floor(Math.random() * missionMessages.length)];
-  missionLine.textContent = pick;
+  missionLine.textContent = pickRandom(missionMessages);
 }
 
 function celebrateTinyVictory() {
@@ -111,10 +129,10 @@ async function saveCheck(foundValue) {
   }
 
   if (foundValue) {
-    submitStatus.textContent = "Mission Complete. Finally. Someone tell HR.";
+    submitStatus.textContent = pickRandom(successLines);
     celebrateTinyVictory();
   } else {
-    submitStatus.textContent = "Mission Failed. Shocking. See you tomorrow.";
+    submitStatus.textContent = pickRandom(failureLines);
   }
   rotateMissionMessage();
   await loadLatestChecks();
