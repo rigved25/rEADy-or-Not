@@ -21,6 +21,75 @@ const missionLine = document.getElementById("mission-line");
 
 const switchUserBtn1 = document.getElementById("switch-user-btn-1");
 const switchUserBtn2 = document.getElementById("switch-user-btn-2");
+const loginNote = document.getElementById("login-note");
+const lakshitaPrompt = document.getElementById("lakshita-prompt");
+const shrirangIntro = document.getElementById("shrirang-intro");
+
+const loginNotes = [
+  "Two-factor authentication: step 1, open dropdown. Step 2, there is no step 2.",
+  "Hackers hate this one weird trick. (It's a dropdown.)",
+  "This dropdown has stopped exactly zero unauthorized users.",
+  "We considered adding a password. Then we didn't.",
+  "Please don't hack us. That's our entire security policy.",
+  "Encrypted with 256-bit hope.",
+  "We spent the security budget on sarcasm.",
+  "If you can operate a dropdown, you're in. The bar is underground.",
+  "Could this login *be* any more secure?",
+  "Fort Knox wishes they had our dropdown technology.",
+  "Password? Where we're going, we don't need passwords.",
+  "Your identity is now protected by the honor system.",
+];
+
+const lakshitaPrompts = [
+  "Go on. Ruin Shrirang's day. Or make it.",
+  "Be honest. We can handle it. (We can't.)",
+  "The fate of Shrirang's career is in your hands. No pressure.",
+  "Just tap the button. Shrirang is probably watching.",
+  "Quick, before Shrirang texts you asking.",
+  "We both know how this ends. But go ahead.",
+  "Shrirang's entire employment status depends on this click.",
+  "One click. That's all that stands between Shrirang and a paycheck.",
+  "Time for the daily heartbreak. Or miracle. Mostly heartbreak.",
+  "So, did USPS finally remember we exist?",
+  "On a scale of 'nothing' to 'something,' what showed up?",
+  "You know the drill. Check. Report. Repeat until retirement.",
+];
+
+const shrirangIntros = [
+  "You're here to watch. Lakshita's here to work. Classic.",
+  "Your job: wait. Lakshita's job: everything else.",
+  "Ah yes, the man who can't work until the package arrives. How's that going?",
+  "You could text Lakshita. But this is more dramatic.",
+  "Welcome, Captain. Your only job is to scroll and sigh.",
+  "Lakshita does the fieldwork. You get the dashboard. Life is fair.",
+  "Breaking: man who can't work checks if he can work yet.",
+  "The real mission was getting Shrirang to stop asking. This website failed.",
+  "Your contribution: refreshing this page. Noted.",
+  "Observation deck activated. Doing nothing has never looked this professional.",
+  "Sit back, Captain. Someone else is doing the actual work.",
+];
+
+const emptyTableLines = [
+  "This space intentionally left blank. Just like our hopes.",
+  "This is what despair looks like in table format.",
+  "Table status: as empty as Shrirang's work calendar.",
+  "Current occupancy: zero rows and one broken dream.",
+  "This table has the same content as Shrirang's paycheck. Nothing.",
+  "So empty, even USPS would be impressed.",
+  "Even the table is waiting for something to happen.",
+  "No data. No package. No surprises.",
+  "Loading... just kidding. There's nothing to load.",
+  "Error 404: Data not found. Package also not found.",
+  "No reports yet. Much like the package, absolutely nothing is here.",
+];
+
+const logoutLabels = [
+  "Abandon Mission",
+  "Rage Quit",
+  "Self-Destruct",
+  "Eject",
+  "I'm Out",
+];
 
 const missionMessages = [
   "USPS tracking refreshed 12 times. Still 'in transit.' Shocking.",
@@ -61,7 +130,7 @@ function formatDate(value) {
 
 function setRows(rows) {
   if (!rows || rows.length === 0) {
-    checksBody.innerHTML = '<tr><td colspan="2">No reports yet. Much like the package, absolutely nothing is here.</td></tr>';
+    checksBody.innerHTML = `<tr><td colspan="2">${pickRandom(emptyTableLines)}</td></tr>`;
     return;
   }
 
@@ -179,9 +248,13 @@ function handleContinue() {
 
   if (selectedUser === "Lakshita") {
     show(lakshitaCard);
+    lakshitaPrompt.textContent = pickRandom(lakshitaPrompts);
+    switchUserBtn1.textContent = pickRandom(logoutLabels);
     missionLine.textContent = "Identity verified via dropdown. Welcome, Agent.";
   } else {
     show(shrirangCard);
+    shrirangIntro.textContent = pickRandom(shrirangIntros);
+    switchUserBtn2.textContent = pickRandom(logoutLabels);
     missionLine.textContent = "Identity verified via dropdown. Welcome, Captain.";
   }
 
@@ -203,3 +276,4 @@ if (hasConfig) {
 }
 
 rotateMissionMessage();
+loginNote.textContent = pickRandom(loginNotes);
