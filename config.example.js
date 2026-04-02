@@ -1,4 +1,4 @@
 window.READ_OR_NOT_CONFIG = {
-  supabaseUrl: "https://etflfeddxokwfgfyzlgd.supabase.co",
+  supabaseUrl: "https://etfleeddxokwfgyzjlgd.supabase.co",
   supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0ZmxlZWRkeG9rd2ZneXpqbGdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwOTE0NjgsImV4cCI6MjA5MDY2NzQ2OH0.EMGHlI3LxYgu7Dk69R7Sc4Y5CEH9qVwc_jC7eexi89E",
 };
