@@ -17,9 +17,18 @@ const foundYesBtn = document.getElementById("found-yes-btn");
 const foundNoBtn = document.getElementById("found-no-btn");
 const refreshBtn = document.getElementById("refresh-btn");
 const checksBody = document.getElementById("checks-body");
+const missionLine = document.getElementById("mission-line");
+const overengineeringLevel = document.getElementById("overengineering-level");
 
 const switchUserBtn1 = document.getElementById("switch-user-btn-1");
 const switchUserBtn2 = document.getElementById("switch-user-btn-2");
+
+const missionMessages = [
+  "USPS satellites aligned. Scanning mailbox sector...",
+  "Bureaucracy boss fight still active.",
+  "Coffee level stable. Hope level fluctuating.",
+  "Tiny task, enterprise-grade dashboard.",
+];
 
 function show(el) {
   el.classList.remove("hidden");
@@ -34,6 +43,7 @@ function resetView() {
   hide(shrirangCard);
   hide(tableCard);
   submitStatus.textContent = "";
+  missionLine.textContent = "Awaiting next operator at command console.";
 }
 
 function formatDate(value) {
@@ -49,9 +59,27 @@ function setRows(rows) {
   checksBody.innerHTML = rows
     .map((row) => {
       const foundText = row.found ? "Yes" : "No";
-      return `<tr><td>${formatDate(row.checked_at)}</td><td>${foundText}</td></tr>`;
+      const funnyLabel = row.found
+        ? `${foundText} - Civilization restored`
+        : `${foundText} - USPS side quest continues`;
+      return `<tr><td>${formatDate(row.checked_at)}</td><td>${funnyLabel}</td></tr>`;
     })
     .join("");
+}
+
+function updateOverengineeringLevel() {
+  const level = Math.floor(Math.random() * 26) + 75;
+  overengineeringLevel.textContent = `Overengineering Level: ${level}%`;
+}
+
+function rotateMissionMessage() {
+  const pick = missionMessages[Math.floor(Math.random() * missionMessages.length)];
+  missionLine.textContent = pick;
+}
+
+function celebrateTinyVictory() {
+  document.body.classList.add("party");
+  setTimeout(() => document.body.classList.remove("party"), 1200);
 }
 
 async function loadLatestChecks() {
@@ -86,7 +114,14 @@ async function saveCheck(foundValue) {
     return;
   }
 
-  submitStatus.textContent = `Saved: ${foundValue ? "Yes" : "No"}`;
+  if (foundValue) {
+    submitStatus.textContent = "Mail found. Operation Paycheck unlocked.";
+    celebrateTinyVictory();
+  } else {
+    submitStatus.textContent = "No mail yet. Bureaucracy raid continues.";
+  }
+  rotateMissionMessage();
+  updateOverengineeringLevel();
   await loadLatestChecks();
 }
 
@@ -103,10 +138,14 @@ function handleContinue() {
 
   if (selectedUser === "Lakshita") {
     show(lakshitaCard);
+    missionLine.textContent = "Field Agent mode enabled.";
   } else {
     show(shrirangCard);
+    missionLine.textContent = "Captain view enabled. Monitoring live feed.";
   }
 
+  rotateMissionMessage();
+  updateOverengineeringLevel();
   loadLatestChecks();
 }
 
@@ -122,3 +161,6 @@ if (hasConfig) {
 } else {
   show(setupWarning);
 }
+
+rotateMissionMessage();
+updateOverengineeringLevel();

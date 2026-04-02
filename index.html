@@ -10,11 +10,15 @@
     <main class="container">
       <header class="header">
         <h1>rEAD or NOT</h1>
-        <p>Quickly track whether the EAD mail arrived.</p>
+        <p>Mission Control for the most overengineered mailbox check ever.</p>
+        <div class="mission-strip">
+          <p id="mission-line">Initializing EAD radar...</p>
+          <p id="overengineering-level">Overengineering Level: calculating...</p>
+        </div>
       </header>
 
       <section class="card" id="login-card">
-        <h2>Login</h2>
+        <h2>Command Console Login</h2>
         <label for="user-select">Who are you?</label>
         <div class="row">
           <select id="user-select">
@@ -22,35 +26,35 @@
             <option value="Shrirang">Shrirang</option>
             <option value="Lakshita">Lakshita</option>
           </select>
-          <button id="continue-btn">Continue</button>
+          <button id="continue-btn">Enter Mission</button>
         </div>
         <p class="note">Simple selector only (no password).</p>
       </section>
 
       <section class="card hidden" id="lakshita-card">
         <div class="card-title-row">
-          <h2>Lakshita Action</h2>
+          <h2>Field Agent Lakshita</h2>
           <button class="link-btn" id="switch-user-btn-1">Switch user</button>
         </div>
-        <p>Did you find the mail today?</p>
+        <p>EAD radar scan complete. Any signal found?</p>
         <div class="row">
-          <button class="yes" id="found-yes-btn">Yes</button>
-          <button class="no" id="found-no-btn">No</button>
+          <button class="yes" id="found-yes-btn">Signal Detected</button>
+          <button class="no" id="found-no-btn">Still in Orbit</button>
         </div>
         <p id="submit-status" class="status"></p>
       </section>
 
       <section class="card hidden" id="shrirang-card">
         <div class="card-title-row">
-          <h2>Shrirang View</h2>
+          <h2>Captain Shrirang</h2>
           <button class="link-btn" id="switch-user-btn-2">Switch user</button>
         </div>
-        <p>Latest checks are shown below.</p>
+        <p>Command center feed is live below.</p>
       </section>
 
       <section class="card hidden" id="table-card">
         <div class="card-title-row">
-          <h2>Latest Checks</h2>
+          <h2>Mission Log</h2>
           <button id="refresh-btn">Refresh</button>
         </div>
         <div class="table-wrap">

@@ -36,6 +36,19 @@ body {
   color: var(--muted);
 }
 
+.mission-strip {
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  background: #f9fbff;
+  margin-bottom: 10px;
+}
+
+.mission-strip p {
+  margin: 2px 0;
+  font-size: 13px;
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -105,6 +118,7 @@ button:hover {
 .status {
   min-height: 20px;
   margin-top: 10px;
+  font-weight: 600;
 }
 
 .table-wrap {
@@ -137,4 +151,20 @@ td {
   color: var(--accent);
   border: none;
   padding: 0;
+}
+
+body.party {
+  animation: partyFlash 500ms ease-in-out 2;
+}
+
+@keyframes partyFlash {
+  0% {
+    background: var(--bg);
+  }
+  50% {
+    background: #fff4bf;
+  }
+  100% {
+    background: var(--bg);
+  }
 }
