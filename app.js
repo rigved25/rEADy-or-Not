@@ -18,16 +18,17 @@ const foundNoBtn = document.getElementById("found-no-btn");
 const refreshBtn = document.getElementById("refresh-btn");
 const checksBody = document.getElementById("checks-body");
 const missionLine = document.getElementById("mission-line");
-const overengineeringLevel = document.getElementById("overengineering-level");
 
 const switchUserBtn1 = document.getElementById("switch-user-btn-1");
 const switchUserBtn2 = document.getElementById("switch-user-btn-2");
 
 const missionMessages = [
-  "USPS satellites aligned. Scanning mailbox sector...",
-  "Bureaucracy boss fight still active.",
-  "Coffee level stable. Hope level fluctuating.",
-  "Tiny task, enterprise-grade dashboard.",
+  "USPS tracking refreshed 12 times today. No change.",
+  "Someone built an entire website for this. Let that sink in.",
+  "Day N of waiting. Morale is... fine.",
+  "Bureaucracy boss fight: still active.",
+  "Sources confirm the mail has not materialized.",
+  "HR is asking questions. We need that card.",
 ];
 
 function show(el) {
@@ -43,7 +44,7 @@ function resetView() {
   hide(shrirangCard);
   hide(tableCard);
   submitStatus.textContent = "";
-  missionLine.textContent = "Awaiting next operator at command console.";
+  missionLine.textContent = "Session terminated. Please re-authenticate via dropdown.";
 }
 
 function formatDate(value) {
@@ -52,7 +53,7 @@ function formatDate(value) {
 
 function setRows(rows) {
   if (!rows || rows.length === 0) {
-    checksBody.innerHTML = '<tr><td colspan="2">No data yet.</td></tr>';
+    checksBody.innerHTML = '<tr><td colspan="2">No field reports yet. Someone check the mail.</td></tr>';
     return;
   }
 
@@ -60,16 +61,11 @@ function setRows(rows) {
     .map((row) => {
       const foundText = row.found ? "Yes" : "No";
       const funnyLabel = row.found
-        ? `${foundText} - Civilization restored`
-        : `${foundText} - USPS side quest continues`;
+        ? "Mission Complete"
+        : "Mission Failed";
       return `<tr><td>${formatDate(row.checked_at)}</td><td>${funnyLabel}</td></tr>`;
     })
     .join("");
-}
-
-function updateOverengineeringLevel() {
-  const level = Math.floor(Math.random() * 26) + 75;
-  overengineeringLevel.textContent = `Overengineering Level: ${level}%`;
 }
 
 function rotateMissionMessage() {
@@ -102,7 +98,7 @@ async function loadLatestChecks() {
 async function saveCheck(foundValue) {
   if (!supabase) return;
 
-  submitStatus.textContent = "Saving...";
+  submitStatus.textContent = "Transmitting report to HQ...";
 
   const { error } = await supabase.from("mail_checks").insert({
     found: foundValue,
@@ -115,13 +111,12 @@ async function saveCheck(foundValue) {
   }
 
   if (foundValue) {
-    submitStatus.textContent = "Mail found. Operation Paycheck unlocked.";
+    submitStatus.textContent = "Mission Complete. Finally. Someone tell HR.";
     celebrateTinyVictory();
   } else {
-    submitStatus.textContent = "No mail yet. Bureaucracy raid continues.";
+    submitStatus.textContent = "Mission Failed. Shocking. See you tomorrow.";
   }
   rotateMissionMessage();
-  updateOverengineeringLevel();
   await loadLatestChecks();
 }
 
@@ -129,7 +124,7 @@ function handleContinue() {
   const selectedUser = userSelect.value;
 
   if (!selectedUser) {
-    alert("Please select a user.");
+    alert("Access denied. Please select an identity from the dropdown.");
     return;
   }
 
@@ -138,14 +133,13 @@ function handleContinue() {
 
   if (selectedUser === "Lakshita") {
     show(lakshitaCard);
-    missionLine.textContent = "Field Agent mode enabled.";
+    missionLine.textContent = "Identity verified via dropdown. Welcome, Agent.";
   } else {
     show(shrirangCard);
-    missionLine.textContent = "Captain view enabled. Monitoring live feed.";
+    missionLine.textContent = "Identity verified via dropdown. Welcome, Captain.";
   }
 
   rotateMissionMessage();
-  updateOverengineeringLevel();
   loadLatestChecks();
 }
 
@@ -163,4 +157,3 @@ if (hasConfig) {
 }
 
 rotateMissionMessage();
-updateOverengineeringLevel();

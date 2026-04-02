@@ -3,43 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rEAD or NOT</title>
+    <title>rEADy or Not</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="container">
       <header class="header">
-        <h1>rEAD or NOT</h1>
-        <p>Mission Control for the most overengineered mailbox check ever.</p>
+        <h1>rEADy or Not</h1>
+        <p>Because a text message was too simple.</p>
         <div class="mission-strip">
-          <p id="mission-line">Initializing EAD radar...</p>
-          <p id="overengineering-level">Overengineering Level: calculating...</p>
+          <p id="mission-line">Systems online. Awaiting highly secure credentials.</p>
         </div>
       </header>
 
       <section class="card" id="login-card">
-        <h2>Command Console Login</h2>
-        <label for="user-select">Who are you?</label>
+        <h2>Highly Secure Login</h2>
+        <label for="user-select">Identity verification</label>
         <div class="row">
           <select id="user-select">
-            <option value="">Select user</option>
+            <option value="">-- classify yourself --</option>
             <option value="Shrirang">Shrirang</option>
             <option value="Lakshita">Lakshita</option>
           </select>
-          <button id="continue-btn">Enter Mission</button>
+          <button id="continue-btn">Authenticate</button>
         </div>
-        <p class="note">Simple selector only (no password).</p>
+        <p class="note">Protected by state-of-the-art dropdown technology.</p>
       </section>
 
       <section class="card hidden" id="lakshita-card">
         <div class="card-title-row">
           <h2>Field Agent Lakshita</h2>
-          <button class="link-btn" id="switch-user-btn-1">Switch user</button>
+          <button class="link-btn" id="switch-user-btn-1">Logout (very secure)</button>
         </div>
-        <p>EAD radar scan complete. Any signal found?</p>
+        <p>Agent, report. Did the EAD card arrive?</p>
         <div class="row">
-          <button class="yes" id="found-yes-btn">Signal Detected</button>
-          <button class="no" id="found-no-btn">Still in Orbit</button>
+          <button class="yes" id="found-yes-btn">Mission Complete</button>
+          <button class="no" id="found-no-btn">Mission Failed</button>
         </div>
         <p id="submit-status" class="status"></p>
       </section>
@@ -47,9 +46,9 @@
       <section class="card hidden" id="shrirang-card">
         <div class="card-title-row">
           <h2>Captain Shrirang</h2>
-          <button class="link-btn" id="switch-user-btn-2">Switch user</button>
+          <button class="link-btn" id="switch-user-btn-2">Logout (very secure)</button>
         </div>
-        <p>Command center feed is live below.</p>
+        <p>Sit back, Captain. Field reports are incoming.</p>
       </section>
 
       <section class="card hidden" id="table-card">
@@ -61,13 +60,13 @@
           <table>
             <thead>
               <tr>
-                <th>Checked At</th>
-                <th>Found</th>
+                <th>Timestamp</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody id="checks-body">
               <tr>
-                <td colspan="2">No data yet.</td>
+                <td colspan="2">No field reports yet. Someone check the mail.</td>
               </tr>
             </tbody>
           </table>
