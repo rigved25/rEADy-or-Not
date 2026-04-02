@@ -27,7 +27,7 @@ const missionMessages = [
   "Someone built an entire website for this. Let that sink in.",
   "Day N of waiting. Morale is... fine.",
   "Bureaucracy boss fight: still active.",
-  "Sources confirm the mail has not materialized.",
+  "Sources confirm the package has not materialized.",
   "HR is asking questions. We need that card.",
 ];
 
@@ -53,7 +53,7 @@ function formatDate(value) {
 
 function setRows(rows) {
   if (!rows || rows.length === 0) {
-    checksBody.innerHTML = '<tr><td colspan="2">No field reports yet. Someone check the mail.</td></tr>';
+    checksBody.innerHTML = '<tr><td colspan="2">No field reports yet. The package remains unaccounted for.</td></tr>';
     return;
   }
 
